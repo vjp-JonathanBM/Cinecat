@@ -3,13 +3,22 @@ function showItems( lItems){
 }
 
 function filterByYear( items, annoAntes, annoDespues ) {
-    return items.filter(v => v.anno > annoAntes && v.anno < annoDespues);
+    return items.filter(v => v.anno >= annoAntes && v.anno <= annoDespues);
 }
-function CountByCategory( items, genre) {
+function countByCategory( items, genre) {
     let count = items.filter(v => v.genero === genre).length;
     console.log(count, " peliculas encontradas del genero: ", genre);
 }
 
+function buscarPorTexto(lItems, text) {
+  let textMinus = text.toLowerCase();
+  return lItems.filter( v => v.titulo.toLowerCase() === textMinus);
+}
+
+function eliminarPorId(lItems, id) {
+  let index = lItems.findIndex(v => v.id === 1);
+  lItems.splice
+}
 
 const peliculas1 = [
   {
@@ -179,9 +188,11 @@ const peliculas2 = [
 //showItems(peliculas1);
 //showItems(peliculas2);
 
-filmsYear = filterByYear(peliculas1, 2005, 2010);
-
-console.log(filmsYear.forEach(v => console.log(v))); //TODO: No funciona revisar
+/* filmsYear = filterByYear(peliculas1, 2000, 2010);
+console.log(filmsYear.forEach(v => console.log(v)));
 
 filterByYear(peliculas1, 2010, 2015);
-CountByCategory(peliculas1, "Ciencia ficción");
+CountByCategory(peliculas1, "Ciencia ficción"); */
+buscarPorTexto(peliculas1, "Avatar").forEach(v => console.log(v));
+peliculas1.findIndex(v => v.id === 1);
+peliculas1.splice(4,1);
