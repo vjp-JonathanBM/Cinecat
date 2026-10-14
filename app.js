@@ -15,9 +15,23 @@ function buscarPorTexto(lItems, text) {
   return lItems.filter( v => v.titulo.toLowerCase() === textMinus);
 }
 
+function annadir(lItems, item) {
+  let maxId = 1;
+  lItems.forEach(v => {
+    if(v.id >maxId) maxId=v.id;
+  });
+  item.id = maxId;
+  lItems.push(item);
+  return maxId;
+}
+
 function eliminarPorId(lItems, id) {
-  let index = lItems.findIndex(v => v.id === 1);
-  lItems.splice
+  let index = lItems.findIndex(v => v.id == id);
+  if( index != -1) {
+    lItems.splice(index, 1);
+    return true;
+  }
+  return false;
 }
 
 const peliculas1 = [
@@ -193,6 +207,18 @@ console.log(filmsYear.forEach(v => console.log(v)));
 
 filterByYear(peliculas1, 2010, 2015);
 CountByCategory(peliculas1, "Ciencia ficción"); */
+
+
 buscarPorTexto(peliculas1, "Avatar").forEach(v => console.log(v));
-peliculas1.findIndex(v => v.id === 1);
-peliculas1.splice(4,1);
+
+item = {
+  id: 11,
+    titulo: "Matrix",
+    director: "Lana y Lilly Wachowski",
+    anno: 1999,
+    genero: "Ciencia ficción",
+    duracion: 136
+};
+annadir(peliculas1, item);
+showItems(peliculas1);
+console.log(eliminarPorId(peliculas1, "5"));
